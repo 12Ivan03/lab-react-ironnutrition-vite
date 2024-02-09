@@ -23,8 +23,6 @@ function AddFoodForm({ addFoodPass }) {
     const handleServings = e => setServings(e.target.value)
 
 
-
-
         //2.handle submit form... the value of the input is taken 
         //      from step 1. not from the input itself,
         //      that's a difference between HTML and React...
@@ -54,28 +52,50 @@ function AddFoodForm({ addFoodPass }) {
         addFoodPass(newFood)
     }
 
+
+// button open and close 
+
+const [ searchMenu, setSearchMenu ] = useState('close-search-menu')
+const [ btnName, setBtnName ] = useState('Add Food ')
+
+const handleCreateFood = () => {
+    if(searchMenu === "close-search-menu"){
+        setSearchMenu('open-search-menu');
+        setBtnName('Close');
+    } else {
+        setSearchMenu('close-search-menu');
+        setBtnName('Add Food')
+    }
+}
+
     return(
-        <div className='in-add-food-container'>
-            <h1>Create your favorite Food Box:</h1>
-            <form className="formAdd" action="" onSubmit={handleSubmit}>
-                <label> Name:
-                    <input type="text" name="name" placeholder='Salad, Fries, Drink...' value={name} onChange={handleName}/>
-                </label>
-                <br />
-                <label> Image:
-                    <input type="text" name="image" placeholder='http://...' value={image} onChange={handleImage} />
-                </label>
-                <br />
-                <label> Calories:
-                    <input type="number" name="calories" placeholder='0' value={calories} onChange={handleCalories}  />
-                </label>
-                <br />
-                <label>Servings:
-                    <input type="number" name="servings" placeholder='1' value={servings} onChange={handleServings} />
-                </label>
-                <br />
-                <button type="submit">Create</button>      
-            </form>
+        <div>
+            <div>
+                <button onClick={handleCreateFood}>{btnName}</button>
+            </div>
+
+            <div className={searchMenu}>
+                <h2>Create your favorite Food:</h2>
+                <form className="formAdd" action="" onSubmit={handleSubmit}>
+                    <label> Name:
+                        <input type="text" name="name" placeholder='Salad, Fries, Drink...' value={name} onChange={handleName}/>
+                    </label>
+                    <br />
+                    <label> Image:
+                        <input type="text" name="image" placeholder='http://...' value={image} onChange={handleImage} />
+                    </label>
+                    <br />
+                    <label> Calories:
+                        <input type="number" name="calories" placeholder='0' value={calories} onChange={handleCalories}  />
+                    </label>
+                    <br />
+                    <label>Servings:
+                        <input type="number" name="servings" placeholder='1' value={servings} onChange={handleServings} />
+                    </label>
+                    <br />
+                    <button type="submit">Create</button>      
+                </form>
+            </div>
         </div>
     )
 }

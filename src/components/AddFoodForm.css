@@ -5,8 +5,16 @@
     align-items: center;
 }
 
-.in-add-food-container {
+.close-search-menu {
+    display: none;
+}
+
+.open-search-menu {
+    display: block;
+}
+
+/* .in-add-food-container {
     position: fixed;
     width: 400px;
     overflow-y: scroll;
-}
+} */
