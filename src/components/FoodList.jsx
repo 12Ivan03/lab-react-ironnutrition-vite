@@ -16,9 +16,9 @@ const [food, setFood] = useState(foodsData)
     setFood(addedFood)
   };
 
-  const deleteFood = (Foodid) => {
+  const deleteFood = (foodid) => {. // small letters... camelcase
     const filterDelFood = food.filter(foods => {
-      return foods.id !== Foodid
+      return foods.id !== foodid
     })
     setFood(filterDelFood)
   };
