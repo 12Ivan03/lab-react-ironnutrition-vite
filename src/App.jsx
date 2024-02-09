@@ -1,31 +1,31 @@
 
-import AddFoodForm from './components/AddFoodForm';
-import FoodBox from './components/FoodBox';
-import foodsData from './foods.json'
-import { useState } from 'react';
+// import AddFoodForm from './components/AddFoodForm';
+// import FoodBox from './components/FoodBox';
+// import foodsData from './foods.json'
+// import { useState } from 'react';
+import FoodList from "./components/FoodList";
 import "./App.css";
 
 function App() {
-  const [food, setFood] = useState(foodsData)
-  //const [addFood, setAddFood] = useState(foodsData) 
+  // const [food, setFood] = useState(foodsData)
+  // //const [addFood, setAddFood] = useState(foodsData) 
 
-  const addFoodFun = (addNewFood) => {
-    const addedFood = [...food, addNewFood].reverse()
+  // const addFoodFun = (addNewFood) => {
+  //   const addedFood = [...food, addNewFood].reverse()
 
-    setFood(addedFood)
-  };
+  //   setFood(addedFood)
+  // };
 
-  const deleteFood = (Foodid) => {
-    const filterDelFood = food.filter(foods => {
-      return foods.id !== Foodid
-    })
-    setFood(filterDelFood)
-  };
+  // const deleteFood = (Foodid) => {
+  //   const filterDelFood = food.filter(foods => {
+  //     return foods.id !== Foodid
+  //   })
+  //   setFood(filterDelFood)
+  // };
 
   return (
     <div className="App">
-      <AddFoodForm addFoodPass={addFoodFun} />
-      <FoodBox foodPass={food} deleteFoodPass={deleteFood}/>
+      <FoodList />
     </div>
   );
 }
