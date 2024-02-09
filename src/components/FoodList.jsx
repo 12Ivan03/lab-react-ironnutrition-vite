@@ -54,12 +54,13 @@ const [searchFood , setSearchFood] = useState(foodsData)
     setFood(foundFood);
   }
 
+  const optionFood = [...foodsData];
 
   return (
     <div className='food-list-container'>
         <div>
           <div className='add-food-container'>
-              <SearchFood searchFoodFunPass={searchFoodFun} foodOption={food}/>
+              <SearchFood searchFoodFunPass={searchFoodFun} foodOption={optionFood}/>
               <br />
               <AddFoodForm addFoodPass={addFoodFun} />    
           </div>

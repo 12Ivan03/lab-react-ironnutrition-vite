@@ -23,7 +23,7 @@ function SearchFood({ searchFoodFunPass, foodOption }) {
         searchFoodFunPass(e.target.value);
     };
 
-    const alphabet = foodOption.reverse();
+    const alphabet = foodOption.reverse()
     //"abcdefghijklmnopqrstuvwxyz".split(''); // split makes it an arr.
 
 // button for opening and closing
