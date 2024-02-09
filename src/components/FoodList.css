@@ -1,0 +1,16 @@
+.food-list-container {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    position: relative;
+}
+
+.add-food-container {
+    width: 25vw;
+    margin-left: 10%;
+    overflow-y: scroll;
+}
+
+.food-box-container {
+    width: 57vw;
+    margin-right: 10%;
+}

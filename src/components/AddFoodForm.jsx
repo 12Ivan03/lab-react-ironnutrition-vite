@@ -55,8 +55,8 @@ function AddFoodForm({ addFoodPass }) {
     }
 
     return(
-        <div>
-            <h1>Create your favorite Food Box: </h1>
+        <div className='in-add-food-container'>
+            <h1>Create your favorite Food Box:</h1>
             <form className="formAdd" action="" onSubmit={handleSubmit}>
                 <label> Name:
                     <input type="text" name="name" placeholder='Salad, Fries, Drink...' value={name} onChange={handleName}/>

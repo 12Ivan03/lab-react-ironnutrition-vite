@@ -4,3 +4,9 @@
     justify-content: center;
     align-items: center;
 }
+
+.in-add-food-container {
+    position: fixed;
+    width: 400px;
+    overflow-y: scroll;
+}

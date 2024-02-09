@@ -1,4 +1,5 @@
 
+import './FoodList.css'
 import AddFoodForm from './AddFoodForm';
 import FoodBox from './FoodBox';
 import foodsData from '../foods.json'
@@ -10,7 +11,7 @@ const [food, setFood] = useState(foodsData)
   //const [addFood, setAddFood] = useState(foodsData) 
 
   const addFoodFun = (addNewFood) => {
-    const addedFood = [...food, addNewFood].reverse()
+    const addedFood = [...food, addNewFood]
 
     setFood(addedFood)
   };
@@ -24,9 +25,13 @@ const [food, setFood] = useState(foodsData)
 
 
   return (
-    <div>
-        <AddFoodForm addFoodPass={addFoodFun} />
-        <FoodBox foodPass={food} deleteFoodPass={deleteFood}/>
+    <div className='food-list-container'>
+        <div className='add-food-container'>
+            <AddFoodForm addFoodPass={addFoodFun} />    
+        </div>
+        <div className='food-box-container'>
+            <FoodBox foodPass={food} deleteFoodPass={deleteFood}/>
+        </div>
     </div>
   )
 }

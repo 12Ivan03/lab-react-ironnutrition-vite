@@ -1,12 +1,19 @@
+
+import './FoodBox'
+
 function FoodBox({ foodPass, deleteFoodPass }) {
+
+    const foodPassReverse = [...foodPass].reverse()
     //const { food } = props
     return(
-        <div>
-            <h1>Food Box</h1>
+        <div className='in-food-box-container'>
+            <div className="titel-food-box">
+                <h1>Food Box</h1>
+            </div>
 
-            {foodPass.length === 0 ? <div> <p>No food avilable.</p> <p>You have delete all the food!</p> </div> : <p></p>}
+            {foodPassReverse.length === 0 ? <div> <p>No food avilable.</p> <p>You have delete all the food!</p> </div> : <p></p>}
 
-            {foodPass.map((x) => {
+            {foodPassReverse.map((x) => {
 
                 return(
                     <div key={x.id}>
