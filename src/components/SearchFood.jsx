@@ -27,48 +27,39 @@ function SearchFood({ searchFoodFunPass, foodOption }) {
     //"abcdefghijklmnopqrstuvwxyz".split(''); // split makes it an arr.
 
 // button for opening and closing
-    const [ searchMenu , setSearchMenu ] = useState('close-search')
-    const [ btnMenu , setBtnMenu ] = useState('Search Menu')
+    const [ btnMenu , setBtnMenu ] = useState(false)
 
     const handleClick = () => {
-        console.log('searchMenu =>', searchMenu)
-        if(searchMenu === 'close-search') {
-            setSearchMenu('open-search');
-            setBtnMenu('Close menu');
-        } else {
-            setSearchMenu('close-search');
-            setBtnMenu('Search Manu');
-        }
-        
+        setBtnMenu(!btnMenu);
     }
 
     return(
         <div>
             <div>
-                <button onClick={handleClick}>{btnMenu}</button>
+                <button onClick={handleClick}>{btnMenu ? 'Close menu' : 'Search Manu' }</button>
             </div>
 
-
-            <div className={searchMenu}>
-                <h2>Search Food</h2>
-                <form onSubmit={handleSubmite}>
-                    <label>
-                        <input type="search" name="search" value={input} onChange={handleInput} placeholder="Search..."/>
-                    </label>
-                    <button type="submit">Search</button>
-                </form>
-                <br />
-                <label> All Foods:
-                    <select value={selectedLetter} onChange={handleAlphabet}>
-                        <option key='All' value='All'>All</option>
-                        {alphabet.map((letter) => {
-                            return(
-                                <option key={letter.name} value={letter.name}>{letter.name.toUpperCase()}</option>
-                            )
-                        })}
-                    </select>
-                </label>
-            </div>
+            {   btnMenu &&  <div>
+                            <h2>Search Food</h2>
+                            <form onSubmit={handleSubmite}>
+                                <label>
+                                    <input type="search" name="search" value={input} onChange={handleInput} placeholder="Search..."/>
+                                </label>
+                                <button type="submit">Search</button>
+                            </form>
+                            <br />
+                            <label> All Foods:
+                                <select value={selectedLetter} onChange={handleAlphabet}>
+                                    <option key='All' value='All'>All</option>
+                                    {alphabet.map((letter) => {
+                                        return(
+                                            <option key={letter.name} value={letter.name}>{letter.name.toUpperCase()}</option>
+                                        )
+                                    })}
+                                </select>
+                            </label>
+                        </div>
+            }
         </div>
     );
 }

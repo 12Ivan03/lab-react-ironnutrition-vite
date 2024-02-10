@@ -55,47 +55,40 @@ function AddFoodForm({ addFoodPass }) {
 
 // button open and close 
 
-const [ searchMenu, setSearchMenu ] = useState('close-search-menu')
-const [ btnName, setBtnName ] = useState('Add Food ')
+const [ btnName, setBtnName ] = useState(false)
 
 const handleCreateFood = () => {
-    if(searchMenu === "close-search-menu"){
-        setSearchMenu('open-search-menu');
-        setBtnName('Close');
-    } else {
-        setSearchMenu('close-search-menu');
-        setBtnName('Add Food')
-    }
+    setBtnName(!btnName);
 }
 
     return(
         <div>
             <div>
-                <button onClick={handleCreateFood}>{btnName}</button>
+                <button onClick={handleCreateFood}>{btnName ? 'Close' : 'Create Food'}</button>
             </div>
-
-            <div className={searchMenu}>
-                <h2>Create your favorite Food:</h2>
-                <form className="formAdd" action="" onSubmit={handleSubmit}>
-                    <label> Name:
-                        <input type="text" name="name" placeholder='Salad, Fries, Drink...' value={name} onChange={handleName}/>
-                    </label>
-                    <br />
-                    <label> Image:
-                        <input type="text" name="image" placeholder='http://...' value={image} onChange={handleImage} />
-                    </label>
-                    <br />
-                    <label> Calories:
-                        <input type="number" name="calories" placeholder='0' value={calories} onChange={handleCalories}  />
-                    </label>
-                    <br />
-                    <label>Servings:
-                        <input type="number" name="servings" placeholder='1' value={servings} onChange={handleServings} />
-                    </label>
-                    <br />
-                    <button type="submit">Create</button>      
-                </form>
-            </div>
+            { btnName && <div>
+                            <h2>Create your favorite Food:</h2>
+                            <form className="formAdd" action="" onSubmit={handleSubmit}>
+                                <label> Name:
+                                    <input type="text" name="name" placeholder='Salad, Fries, Drink...' value={name} onChange={handleName}/>
+                                </label>
+                                <br />
+                                <label> Image:
+                                    <input type="text" name="image" placeholder='http://...' value={image} onChange={handleImage} />
+                                </label>
+                                <br />
+                                <label> Calories:
+                                    <input type="number" name="calories" placeholder='0' value={calories} onChange={handleCalories}  />
+                                </label>
+                                <br />
+                                <label>Servings:
+                                    <input type="number" name="servings" placeholder='1' value={servings} onChange={handleServings} />
+                                </label>
+                                <br />
+                                <button type="submit">Create</button>      
+                            </form>
+                        </div>
+            }
         </div>
     )
 }
