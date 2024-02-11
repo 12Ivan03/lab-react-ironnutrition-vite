@@ -6,16 +6,19 @@ function SearchFood({ searchFoodFunPass, foodOption }) {
 
 //search strings
     const [ input, setInput ] = useState('');
-    const handleInput = e => setInput(e.target.value);
+    const handleInput = e => {
+        setInput(e.target.value);
+        searchFoodFunPass(e.target.value)
+    }
 
-    const handleSubmite = (e) => {
-        e.preventDefault();
-            //  console.log('handleSubmite from the search food ===> ', input)
-        searchFoodFunPass(input);
-        setInput('');
-    };
+    // const handleSubmite = (e) => {
+    //     e.preventDefault();
+    //         //  console.log('handleSubmite from the search food ===> ', input)
+    //     searchFoodFunPass(input);
+    //     setInput('');
+    // };
 
-// search alphabetical letter menu 
+//search alphabetical letter menu 
     const [ selectedLetter, setSelectedLetter] = useState('');
     const handleAlphabet = e => {
         setSelectedLetter(e.target.value);
@@ -41,12 +44,10 @@ function SearchFood({ searchFoodFunPass, foodOption }) {
 
             {   btnMenu &&  <div>
                             <h2>Search Food</h2>
-                            <form onSubmit={handleSubmite}>
                                 <label>
                                     <input type="search" name="search" value={input} onChange={handleInput} placeholder="Search..."/>
                                 </label>
-                                <button type="submit">Search</button>
-                            </form>
+                               
                             <br />
                             <label> All Foods:
                                 <select value={selectedLetter} onChange={handleAlphabet}>

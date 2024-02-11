@@ -8,8 +8,8 @@ import { useState } from 'react';
 
 function FoodList() {
 
-const [food, setFood] = useState(foodsData)
-const [searchFood , setSearchFood] = useState(foodsData)
+const [food, setFood] = useState(foodsData);
+const [searchFood , setSearchFood] = useState(foodsData);
 
 
         //update the "DB"
@@ -27,6 +27,7 @@ const [searchFood , setSearchFood] = useState(foodsData)
       return foods.id !== foodId
     })
     setFood(filterDelFood)
+    setSearchFood(filterDelFood)
   };
 
         // search and update the "DB"
@@ -37,17 +38,9 @@ const [searchFood , setSearchFood] = useState(foodsData)
 
     if(str === 'All' || str.length === 0){
       foundFood = searchFood;
-    } 
-    // else if (str.length === 1) {
-    //   foundFood = searchFood.filter((food) => {
-    //     return food.name[0].toLowerCase() === str.toLowerCase()
-    //   });
-    // } 
-    else if (str.length >= 1) {
-      //console.log('from the else if str.length > 1 ===>',str)
-      foundFood = searchFood.filter((food) => {
-        //console.log('food that is passed from the filter ', typeof(food.name))
-        return food.name.toLowerCase().includes(str.toLowerCase())
+    } else {
+      foundFood = searchFood.filter((food) => { //console.log('from the else if str.length > 1 ===>',str)
+        return food.name.toLowerCase().includes(str.toLowerCase())                      //console.log('food that is passed from the filter ', typeof(food.name))
       })
     }
 
@@ -55,18 +48,18 @@ const [searchFood , setSearchFood] = useState(foodsData)
   }
 
   const optionFood = [...foodsData];
+  //foodOption={optionFood}
 
   return (
     <div className='food-list-container'>
         <div>
           <div className='add-food-container'>
-              <SearchFood searchFoodFunPass={searchFoodFun} foodOption={optionFood}/>
+              <SearchFood searchFoodFunPass={searchFoodFun} foodOption={optionFood} />
               <br />
               <AddFoodForm addFoodPass={addFoodFun} />    
           </div>
         </div>
         <div className='food-box-container'>
-            
             <FoodBox foodPass={food} deleteFoodPass={deleteFood}/>
         </div>
     </div>
